@@ -1,0 +1,83 @@
+#titulo {
+    color: black;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#central {
+    background-color: #F3F7EC;
+    width: 70%; /* Ancho del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    display: flex; /* Activa Flexbox */
+    align-items: center; /* Alinea verticalmente los elementos */
+    padding: 20px; /* Espaciado interno */
+    gap: 20px; /* Espaciado entre la imagen y el texto */
+    /*border: 2px solid black; /* Borde del contenedor */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 10px 10px 5px #504B38;
+}
+
+#div-imagen{
+    flex:1;
+}
+
+ #div-imagen img {
+    max-width: 100%; /* Asegura que la imagen no exceda su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Elimina espacios en línea alrededor de la imagen */
+    border-radius: 10px;
+}
+
+
+#div-parrafo{
+    flex: 2; /* El texto ocupará más espacio que la imagen */
+    text-align: justify; /* Justifica el texto */
+    font-size: 16px; /* Tamaño de fuente */
+    line-height: 1.6; /* Espaciado entre líneas */
+    
+}
+
+#parrafo{
+    font-family: Ubuntu;
+}
+
+body{
+    background-color: #F8F3D9 ;
+}
+
+#div-menu {
+    margin: 20px auto; /* Espaciado y centrado horizontal */
+    text-align: center; /* Centra el contenido */
+}
+
+#div-menu ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Hace que los elementos de la lista estén en línea */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 20px; /* Espaciado entre los elementos del menú */
+}
+
+#div-menu ul li {
+    display: inline; /* Asegura que los elementos sean en línea */
+}
+
+#div-menu ul li a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: black; /* Color del texto */
+    font-size: 18px; /* Tamaño de fuente */
+    font-family: Arial, sans-serif; /* Fuente del texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Animación suave al pasar el mouse */
+}
+
+#div-menu ul li a:hover {
+    background-color: #F3F7EC; /* Color de fondo al pasar el mouse */
+    color: #333; /* Cambia el color del texto al pasar el mouse */
+}
