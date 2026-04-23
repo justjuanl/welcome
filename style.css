@@ -1,7 +1,9 @@
 /* E-Ink & Academic Design System */
 :root {
-    --bg-paper: #fcfaf2; /* Cream/Paper color */
-    --ink-black: #1a1a1a; /* Deep charcoal */
+    --bg-paper: #fcfaf2;
+    /* Cream/Paper color */
+    --ink-black: #1a1a1a;
+    /* Deep charcoal */
     --ink-gray: #555555;
     --ink-light: #e0ddd5;
     --border-width: 2px;
@@ -38,7 +40,8 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://www.transparenttextures.com/patterns/p6.png'); /* Subtle grain */
+    background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+    /* Subtle grain */
     opacity: 0.05;
     pointer-events: none;
     z-index: 1000;
@@ -85,7 +88,8 @@ main {
 
 #central {
     display: flex;
-    flex-direction: row-reverse; /* Scholarly layout */
+    flex-direction: row-reverse;
+    /* Scholarly layout */
     align-items: flex-start;
     gap: 3rem;
     border: var(--border-width) solid var(--ink-black);
@@ -116,8 +120,10 @@ main {
     height: 220px;
     object-fit: cover;
     border: var(--border-width) solid var(--ink-black);
-    filter: grayscale(1) contrast(1.2); /* E-ink feel for image */
-    border-radius: 0; /* Forced square */
+    filter: grayscale(1) contrast(1.2);
+    /* E-ink feel for image */
+    border-radius: 0;
+    /* Forced square */
 }
 
 #div-parrafo {
