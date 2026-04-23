@@ -1,18 +1,16 @@
-/* Modern Design System */
+/* E-Ink & Academic Design System */
 :root {
-    --bg-color: #0a0a0a;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --accent-primary: #6366f1; /* Indigo */
-    --accent-secondary: #8b5cf6; /* Violet */
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg-paper: #fcfaf2; /* Cream/Paper color */
+    --ink-black: #1a1a1a; /* Deep charcoal */
+    --ink-gray: #555555;
+    --ink-light: #e0ddd5;
+    --border-width: 2px;
+    --font-serif: 'EB Garamond', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --transition: all 0.2s ease-in-out;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 * {
     margin: 0;
@@ -21,116 +19,105 @@
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.6;
+    background-color: var(--bg-paper);
+    color: var(--ink-black);
+    font-family: var(--font-serif);
+    line-height: 1.7;
     overflow-x: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-/* Background Decoration */
+/* Texture overlay for paper effect */
 body::before {
     content: '';
     position: fixed;
-    top: -10%;
-    left: -10%;
-    width: 40%;
-    height: 40%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-    z-index: -1;
-    filter: blur(60px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/p6.png'); /* Subtle grain */
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1000;
 }
 
-/* Header & Nav */
+/* Header & Nav - Square & Minimal */
 header {
     width: 100%;
-    max-width: 1000px;
-    padding: 2rem;
-    position: fixed;
-    top: 0;
-    z-index: 100;
+    max-width: 900px;
+    padding: 3rem 1rem;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-    background: rgba(15, 15, 15, 0.8);
-    backdrop-filter: blur(12px);
-    padding: 0.8rem 2rem;
-    border-radius: 100px;
-    border: 1px solid var(--card-border);
-    width: fit-content;
-    margin: 0 auto;
+    justify-content: space-between;
+    border-bottom: var(--border-width) solid var(--ink-black);
+    padding-bottom: 0.5rem;
 }
 
 nav a {
     text-decoration: none;
-    color: var(--text-muted);
+    color: var(--ink-black);
+    font-family: var(--font-mono);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.2rem 0.5rem;
     transition: var(--transition);
 }
 
 nav a:hover {
-    color: var(--accent-primary);
-    text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    background-color: var(--ink-black);
+    color: var(--bg-paper);
 }
 
-/* Hero Section */
+/* Main Content */
 main {
     max-width: 900px;
     width: 95%;
-    margin-top: 100px;
-    padding: 4rem 2rem;
+    padding: 2rem 0;
 }
 
 #central {
     display: flex;
-    align-items: center;
-    gap: 4rem;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    flex-direction: row-reverse; /* Scholarly layout */
+    align-items: flex-start;
+    gap: 3rem;
+    border: var(--border-width) solid var(--ink-black);
     padding: 3rem;
-    border-radius: 24px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    transition: var(--transition);
+    background: var(--bg-paper);
+    position: relative;
+    /* Decorative corners */
 }
 
-#central:hover {
-    border-color: rgba(99, 102, 241, 0.3);
-    transform: translateY(-5px);
+/* Sharp box shadows for e-ink feel */
+#central::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    border: var(--border-width) solid var(--ink-black);
+    z-index: -1;
 }
 
 #div-imagen {
     flex-shrink: 0;
-    position: relative;
-}
-
-#div-imagen::after {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0.5;
-    filter: blur(10px);
 }
 
 #imagen {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid var(--bg-color);
+    border: var(--border-width) solid var(--ink-black);
+    filter: grayscale(1) contrast(1.2); /* E-ink feel for image */
+    border-radius: 0; /* Forced square */
 }
 
 #div-parrafo {
@@ -138,42 +125,71 @@ main {
 }
 
 #titulo {
-    font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-family: var(--font-serif);
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #fff, #94a3b8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    border-left: 8px solid var(--ink-black);
+    padding-left: 1.5rem;
 }
 
 #parrafo {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    line-height: 1.8;
+    color: var(--ink-black);
+    font-size: 1.25rem;
+    text-align: justify;
+}
+
+/* Data Science/Physics Tags */
+.tags {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    font-family: var(--font-mono);
+}
+
+.tag {
+    font-size: 0.8rem;
+    border: 1px solid var(--ink-black);
+    padding: 0.3rem 0.7rem;
+    background: transparent;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     #central {
         flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-        padding: 2rem;
+        padding: 1.5rem;
+    }
+
+    #central::after {
+        display: none;
     }
 
     #titulo {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     #imagen {
-        width: 150px;
-        height: 150px;
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
     nav ul {
-        gap: 1.5rem;
-        padding: 0.6rem 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
+}
+
+footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
